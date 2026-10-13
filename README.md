@@ -24,7 +24,7 @@ Das Tool kommt als hybrides CMD/PowerShell-Skript – **keine Installation erfor
 
 ## 🚀 Nutzung / Schnellstart
 
-1. Lade die Datei `CleanTool.cmd` herunter (oder geklontes Repo).
+1. Lade die Datei `Win 11 Wartungs Toolkit V1.cmd` herunter.
 2. Führe die `.cmd`-Datei per Doppelklick aus.
 3. Bestätige die **UAC-Meldung (Administratorrechte)**.
 4. Wähle die gewünschte Wartungsaufgabe in der Benutzeroberfläche aus.
