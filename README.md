@@ -1,7 +1,7 @@
 # Win11-Toolkit
 Ein leichtgewichtiges All-in-One Wartungs- &amp; Diagnose-Tool für Windows 11. Mit moderner PowerShell Dark-GUI zur einfachen Bereinigung von Temp-Dateien, DNS-Reset, SFC- &amp; DISM-Systemreparatur, Erstellung von Akku-Berichten und Anzeige von Hardware-Infos. Keine Installation nötig, startet direkt mit Admin-Rechten.
 
-# 🛠️ Windows 11 Maintenance & Cleaner Tool
+# 🛠️ Windows 11 Toolkit
 
 Ein leichtgewichtiges, modernes Open-Source-Tool zur Systembereinigung, Wartung und Diagnose unter Windows 11. 
 
@@ -19,15 +19,6 @@ Das Tool kommt als hybrides CMD/PowerShell-Skript – **keine Installation erfor
 - 🔋 **Akkubericht:** Erstellt einen detaillierten HTML-Energiebericht auf dem Desktop (für Laptops/Tablets).
 - 📊 **System-Info:** Schnelle Übersicht zu OS-Version, CPU, freiem Arbeitsspeicher (RAM) und Systemlaufzeit.
 - 🎨 **Modernes Dark UI:** Integrierte PowerShell Forms Benutzeroberfläche im Windows 11 Design mit Live-Konsole/Logging.
-
----
-
-## 🚀 Nutzung / Schnellstart
-
-1. Lade die Datei `Win 11 Wartungs Toolkit V1.cmd` herunter.
-2. Führe die `.cmd`-Datei per Doppelklick aus.
-3. Bestätige die **UAC-Meldung (Administratorrechte)**.
-4. Wähle die gewünschte Wartungsaufgabe in der Benutzeroberfläche aus.
 
 ---
 
