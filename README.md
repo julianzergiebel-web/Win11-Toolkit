@@ -1,4 +1,4 @@
-# Win11-Toolkit
+# Win11-Toolkit V0.0.6-BETA
 Ein leichtgewichtiges All-in-One Wartungs- &amp; Diagnose-Tool für Windows 11. Mit moderner PowerShell Dark-GUI zur einfachen Bereinigung von Temp-Dateien, DNS-Reset, SFC- &amp; DISM-Systemreparatur, Erstellung von Akku-Berichten und Anzeige von Hardware-Infos. Keine Installation nötig, startet direkt mit Admin-Rechten.
 
 # 🛠️ Windows 11 Toolkit
@@ -28,7 +28,9 @@ Das Skript nutzt ausschließlich native Windows-Tools (`ipconfig`, `sfc`, `dism`
 
 ---
 
-### Gefundene Bugs / Warnings / Infos 
+# Version 0.0.6-BETA 
+
+### Weiter betsehende Warnings / Infos 
 
 Infos: 
 - [Write-Log-Aufruf vor Initialisierung des Formular-Handles](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/12)
@@ -38,6 +40,10 @@ Warnings:
 - [Falsch-positive Erfolgsmeldung beim Akku-/Energiebericht durch alte Berichtdateien](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/8)
 - [Parsing-Fehler bei Skriptpfaden mit einfachen Anführungszeichen](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/10)
 - [Falsche Erfolgsmeldung durch fehlende Exit-Code-Prüfung (SFC & DISM)](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/9)
+
+---
+
+### Behobene Bugs
 
 Bugs: 
 - [Fehlerhafte Größenberechnung und verwaiste Exceptions bei der Temp-Bereinigung](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/7)
