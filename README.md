@@ -25,3 +25,24 @@ Das Tool kommt als hybrides CMD/PowerShell-Skript – **keine Installation erfor
 ## ⚠️ Hinweis zur Sicherheit
 
 Das Skript nutzt ausschließlich native Windows-Tools (`ipconfig`, `sfc`, `dism`, `powercfg`, `Get-CimInstance`). Es werden keine externen Programme installiert oder fremde Abhängigkeiten benötigt.
+
+---
+
+### Gefundene Bugs / Warnings / Infos 
+
+Infos: 
+- [Write-Log-Aufruf vor Initialisierung des Formular-Handles](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/12)
+- [Fehlerhafte Eingabeumlenkung in Batch-Headerzeile <# :](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/11)
+
+Warnings: 
+- [Falsch-positive Erfolgsmeldung beim Akku-/Energiebericht durch alte Berichtdateien](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/8)
+- [Parsing-Fehler bei Skriptpfaden mit einfachen Anführungszeichen](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/10)
+- [Falsche Erfolgsmeldung durch fehlende Exit-Code-Prüfung (SFC & DISM)](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/9)
+
+Bugs: 
+- [Fehlerhafte Größenberechnung und verwaiste Exceptions bei der Temp-Bereinigung](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/7)
+- [Einfrieren der Benutzeroberfläche (GUI-Freeze) durch blockierendes ReadLine()](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/6)
+- [Deadlock-Gefahr durch unvollständige Stream-Umleitung von StandardError](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/5)
+- [Verlust von Prozessausgaben durch Schleifenabbruch bei while (-not $proc.HasExited)](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/4)
+- [Unsichtbare Benutzeroberfläche durch -WindowStyle Hidden mit Application::Run](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/3)
+- [Syntaxfehler durch reservierten Parameternamen $args in PowerShell](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/2)
