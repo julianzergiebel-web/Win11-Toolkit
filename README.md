@@ -38,15 +38,7 @@ Infos:
 
 ---
 
-### Behobene Bugs / Warnings
-
-Bugs: 
-- [Fehlerhafte Größenberechnung und verwaiste Exceptions bei der Temp-Bereinigung](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/7)
-- [Einfrieren der Benutzeroberfläche (GUI-Freeze) durch blockierendes ReadLine()](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/6)
-- [Deadlock-Gefahr durch unvollständige Stream-Umleitung von StandardError](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/5)
-- [Verlust von Prozessausgaben durch Schleifenabbruch bei while (-not $proc.HasExited)](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/4)
-- [Unsichtbare Benutzeroberfläche durch -WindowStyle Hidden mit Application::Run](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/3)
-- [Syntaxfehler durch reservierten Parameternamen $args in PowerShell](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/2)
+### Behobene Warnings
 
 Warnings: 
 - [Falsch-positive Erfolgsmeldung beim Akku-/Energiebericht durch alte Berichtdateien](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/8)
