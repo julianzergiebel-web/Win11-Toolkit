@@ -1,20 +1,22 @@
 <# :
 @echo off
 setlocal
+set "SCRIPT_PATH=%~f0"
+set "SCRIPT_PATH_ESC=%SCRIPT_PATH:'=''%"
 
 :: -------------------------------------------------------------------------------
 :: 1. Admin-Prüfung & Selbsterhöhung (UAC-Prompt bei Bedarf)
 :: -------------------------------------------------------------------------------
 net session >nul 2>&1
 if %errorlevel% neq 0 (
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process cmd -ArgumentList '/c \"\"%~f0\"\"' -Verb RunAs"
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process cmd -ArgumentList '/c \"\"%SCRIPT_PATH_ESC%\"\"' -Verb RunAs"
     exit /b
 )
 
 :: -------------------------------------------------------------------------------
 :: 2. PowerShell GUI im Hintergrund starten (kein CMD-Fenster bleibt offen)
 :: -------------------------------------------------------------------------------
-start "" powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "& ([ScriptBlock]::Create((Get-Content -LiteralPath '%~f0' -Raw -Encoding UTF8)))"
+start "" powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "& ([ScriptBlock]::Create((Get-Content -LiteralPath $env:SCRIPT_PATH -Raw -Encoding UTF8)))"
 exit /b
 #>
 
@@ -159,6 +161,7 @@ function Run-ProcessStream([string]$fileName, [string]$arguments) {
         }
     }
     $proc.WaitForExit()
+    return $proc.ExitCode
 }
 
 function Execute-Task([string]$taskName, [scriptblock]$action) {
@@ -214,8 +217,8 @@ function Add-ModernButton([string]$text, [int]$yPos, [scriptblock]$clickEvent) {
 Add-ModernButton "1. Netzwerk & DNS Reset" 80 {
     Execute-Task "Netzwerk-Reset" {
         Write-Log "=== Starte DNS- & Netzwerk-Bereinigung ===" "#60CDFF"
-        Run-ProcessStream "ipconfig" "/flushdns"
-        Run-ProcessStream "ipconfig" "/registerdns"
+        [void](Run-ProcessStream "ipconfig" "/flushdns")
+        [void](Run-ProcessStream "ipconfig" "/registerdns")
         Write-Log "[OK] DNS-Auflösungscache erfolgreich geleert." "#57C785"
     }
 }
@@ -263,8 +266,12 @@ Add-ModernButton "3. Systemdateien prüfen (SFC)" 190 {
     Execute-Task "SFC Systemprüfung" {
         Write-Log "=== Starte System File Checker (SFC) ===" "#60CDFF"
         Write-Log "Dieser Vorgang kann einige Minuten dauern..." "#E0E0E0"
-        Run-ProcessStream "sfc.exe" "/scannow"
-        Write-Log "[OK] SFC-Prüfung beendet." "#57C785"
+        $exitCode = Run-ProcessStream "sfc.exe" "/scannow"
+        if ($exitCode -eq 0) {
+            Write-Log "[OK] SFC-Prüfung erfolgreich beendet." "#57C785"
+        } else {
+            Write-Log "[FEHLER] SFC-Prüfung mit Exit-Code $exitCode beendet." "#FF6B68"
+        }
     }
 }
 
@@ -272,8 +279,12 @@ Add-ModernButton "3. Systemdateien prüfen (SFC)" 190 {
 Add-ModernButton "4. DISM Image-Check" 245 {
     Execute-Task "DISM Check" {
         Write-Log "=== Starte DISM Komponentenspeicher-Prüfung ===" "#60CDFF"
-        Run-ProcessStream "dism.exe" "/Online /Cleanup-Image /ScanHealth"
-        Write-Log "[OK] DISM-Prüfung abgeschlossen." "#57C785"
+        $exitCode = Run-ProcessStream "dism.exe" "/Online /Cleanup-Image /ScanHealth"
+        if ($exitCode -eq 0) {
+            Write-Log "[OK] DISM-Prüfung erfolgreich abgeschlossen." "#57C785"
+        } else {
+            Write-Log "[FEHLER] DISM-Prüfung mit Exit-Code $exitCode beendet." "#FF6B68"
+        }
     }
 }
 
@@ -282,9 +293,12 @@ Add-ModernButton "5. Akku-/Energiebericht" 300 {
     Execute-Task "Energiebericht" {
         Write-Log "=== Generiere Akku- & Energiebericht ===" "#60CDFF"
         $reportPath = "$env:USERPROFILE\Desktop\battery_report.html"
-        Run-ProcessStream "powercfg.exe" "/batteryreport /output `"$reportPath`""
+        if (Test-Path -LiteralPath $reportPath) {
+            Remove-Item -LiteralPath $reportPath -Force -ErrorAction SilentlyContinue
+        }
+        $exitCode = Run-ProcessStream "powercfg.exe" "/batteryreport /output `"$reportPath`""
         
-        if (Test-Path $reportPath) {
+        if ($exitCode -eq 0 -and (Test-Path -LiteralPath $reportPath)) {
             Write-Log "[OK] Bericht gespeichert auf dem Desktop: $reportPath" "#57C785"
             Start-Process $reportPath
         } else {

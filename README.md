@@ -1,4 +1,4 @@
-# Win11-Toolkit V0.0.6-BETA
+# Win11-Toolkit V0.0.9-BETA
 Ein leichtgewichtiges All-in-One Wartungs- &amp; Diagnose-Tool für Windows 11. Mit moderner PowerShell Dark-GUI zur einfachen Bereinigung von Temp-Dateien, DNS-Reset, SFC- &amp; DISM-Systemreparatur, Erstellung von Akku-Berichten und Anzeige von Hardware-Infos. Keine Installation nötig, startet direkt mit Admin-Rechten.
 
 # 🛠️ Windows 11 Toolkit
@@ -28,22 +28,17 @@ Das Skript nutzt ausschließlich native Windows-Tools (`ipconfig`, `sfc`, `dism`
 
 ---
 
-# Version 0.0.6-BETA 
+# Version 0.0.9-BETA 
 
-### Weiter betsehende Warnings / Infos 
+### Weiter betsehende Infos 
 
 Infos: 
 - [Write-Log-Aufruf vor Initialisierung des Formular-Handles](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/12)
 - [Fehlerhafte Eingabeumlenkung in Batch-Headerzeile <# :](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/11)
 
-Warnings: 
-- [Falsch-positive Erfolgsmeldung beim Akku-/Energiebericht durch alte Berichtdateien](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/8)
-- [Parsing-Fehler bei Skriptpfaden mit einfachen Anführungszeichen](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/10)
-- [Falsche Erfolgsmeldung durch fehlende Exit-Code-Prüfung (SFC & DISM)](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/9)
-
 ---
 
-### Behobene Bugs
+### Behobene Bugs / Warnings
 
 Bugs: 
 - [Fehlerhafte Größenberechnung und verwaiste Exceptions bei der Temp-Bereinigung](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/7)
@@ -52,3 +47,8 @@ Bugs:
 - [Verlust von Prozessausgaben durch Schleifenabbruch bei while (-not $proc.HasExited)](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/4)
 - [Unsichtbare Benutzeroberfläche durch -WindowStyle Hidden mit Application::Run](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/3)
 - [Syntaxfehler durch reservierten Parameternamen $args in PowerShell](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/2)
+
+Warnings: 
+- [Falsch-positive Erfolgsmeldung beim Akku-/Energiebericht durch alte Berichtdateien](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/8)
+- [Parsing-Fehler bei Skriptpfaden mit einfachen Anführungszeichen](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/10)
+- [Falsche Erfolgsmeldung durch fehlende Exit-Code-Prüfung (SFC & DISM)](https://github.com/julianzergiebel-web/Win11-Toolkit/issues/9)
