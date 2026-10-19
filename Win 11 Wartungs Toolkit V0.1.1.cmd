@@ -1,4 +1,4 @@
-<# :
+<# : 2>nul
 @echo off
 setlocal
 set "SCRIPT_PATH=%~f0"
@@ -326,9 +326,11 @@ Add-ModernButton "6. System-Informationen" 355 {
     }
 }
 
-# Initialer Willkommens-Text im Log
-Write-Log "Windows 11 Wartungs-Toolkit initialisiert." "#60CDFF"
-Write-Log "Wähle eine Aktion aus dem linken Menü, um zu starten.`r`n"
+# Initialer Willkommens-Text im Log (nach Initialisierung des Formular-Handles)
+$mainForm.Add_Shown({
+    Write-Log "Windows 11 Wartungs-Toolkit initialisiert." "#60CDFF"
+    Write-Log "Wähle eine Aktion aus dem linken Menü, um zu starten.`r`n"
+})
 
 # Formular starten
 [void]$mainForm.ShowDialog()
